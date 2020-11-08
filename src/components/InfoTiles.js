@@ -1,27 +1,28 @@
 import React, { useEffect, useState } from 'react';
+import Tiles from "./Tiles";
+import Grid from "@material-ui/core/Grid";
+
+
 
 function InfoTiles(props) {
-    const information=useState({})
+    const Global=useState({})
+    const Countries=useState({})
     useEffect(()=>{
         getMyData()
        async function getMyData(){
-        const response=await fetch("https://rapidapi.p.rapidapi.com/totals", {
-            "method": "GET",
-            "headers": {
-                "x-rapidapi-key": "008e546fa2msh8fb244dc4dc123ep10bd52jsn5656e1b6379c",
-                "x-rapidapi-host": "covid-19-data.p.rapidapi.com"
-            }
-        })
+        const response=await fetch("https://api.covid19api.com/summary")
 let data=await response.json()
-information[1](data[0])
-console.log(information[0]);
+Global[1](data["Global"])
+Countries[1](data["Countries"])
        } 
     },[])
     return (
         <div>
-            {information[0]>0?Object.keys(information[0]).map(i=>{
-                return i
-            }):<div> Nodata</div>}
+            <Grid container spacing={3} justify={'center'}>
+            {Object.keys(Global[0]).map((i,index)=>{
+                return <Tiles key={index} myLabel={i} data={Global[0][i]}/>
+            })}
+            </Grid>
         </div>
     );
 }

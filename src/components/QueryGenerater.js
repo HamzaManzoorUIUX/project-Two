@@ -7,13 +7,7 @@ function QueryGenerater(props) {
     const AllCountryName=useState({});
     useEffect(() => {
         async function getData() {
-          const response = await fetch("https://rapidapi.p.rapidapi.com/help/countries", {
-            "method": "GET",
-            "headers": {
-              "x-rapidapi-key": "008e546fa2msh8fb244dc4dc123ep10bd52jsn5656e1b6379c",
-              "x-rapidapi-host": "covid-19-data.p.rapidapi.com"
-            }
-          })
+          const response = await fetch("https://api.covid19api.com/countries")
           let data = await response.json()
           AllCountryName[1](data)
           

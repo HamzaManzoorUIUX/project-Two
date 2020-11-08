@@ -3,8 +3,8 @@ import { makeStyles } from '@material-ui/core/styles';
 import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
 import InputLabel from '@material-ui/core/InputLabel';
-import MenuItem from '@material-ui/core/MenuItem';
-import { PowerOffSharp } from '@material-ui/icons';
+// import MenuItem from '@material-ui/core/MenuItem';
+// import { PowerOffSharp } from '@material-ui/icons';
 const useStyles = makeStyles((theme) => ({
     formControl: {
         margin: theme.spacing(1),
@@ -35,7 +35,7 @@ function CountrySelector(props) {
           <option aria-label="None" value="" />
            {
             props.CountryValue.length>0?props.CountryValue.map((i,index)=>{
-            return <option value={i.name} key={index}>{i.name}</option>
+            return <option value={i.Country} key={index}>{i.Country}</option>
             }):<option value="null" >No Data</option>
             
           }
